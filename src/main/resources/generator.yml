@@ -1,0 +1,10 @@
+author: tanoak
+packageName: cn.tanoak.
+tableName: project_stage
+path:
+  controller: controller
+  service: service
+#  serviceImpl: service.impl
+#  dao: dao.mapper
+#  mapper: mapper
+  entity: dao.entity
