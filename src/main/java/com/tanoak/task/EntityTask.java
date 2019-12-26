@@ -40,9 +40,9 @@ public class EntityTask extends AbstractTask {
         entityData.put("ClassName", className);
         // 单表关系
         entityData.put("Properties", GeneratorUtil.generateEntityProperties(columnInfoList));
-        String filePath = FileUtil.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getEntity());
+        String filePath = FileUtils.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getEntity());
         String fileName = className + ".java";
         // 生成Entity文件
-        FileUtil.generateToJava(FreemarkerConfigUtils.TYPE_ENTITY, entityData, filePath + fileName);
+        FileUtils.generateToJava(FreemarkerConfigUtils.TYPE_ENTITY, entityData, filePath + fileName);
     }
 }

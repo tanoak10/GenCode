@@ -3,7 +3,7 @@ package com.tanoak.db;
 import cn.hutool.core.io.file.FileReader;
 import com.tanoak.entity.ColumnInfo;
 import com.tanoak.utils.ConfigUtil;
-import com.tanoak.utils.FileUtil;
+import com.tanoak.utils.FileUtils;
 import com.tanoak.utils.ResolveSqlUtil;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,7 +36,7 @@ public class CustomDataSource {
 
     static {
         String fileName = "generator.sql";
-        FileReader fileReader = new FileReader(FileUtil.getResourcePath() + fileName);
+        FileReader fileReader = new FileReader(FileUtils.getResourcePath() + fileName);
         readFileSql = fileReader.readString();
     }
 

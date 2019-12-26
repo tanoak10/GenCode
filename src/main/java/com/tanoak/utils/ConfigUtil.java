@@ -26,6 +26,7 @@ public class ConfigUtil {
             Yaml yaml = new Yaml();
 
             configuration = yaml.loadAs(inputStream,Configuration.class);
+
         }
     }
 

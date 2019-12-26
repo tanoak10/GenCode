@@ -3,7 +3,7 @@ package com.tanoak.task;
 import com.tanoak.entity.ColumnInfo;
 import com.tanoak.task.base.AbstractTask;
 import com.tanoak.utils.ConfigUtil;
-import com.tanoak.utils.FileUtil;
+import com.tanoak.utils.FileUtils;
 import com.tanoak.utils.FreemarkerConfigUtils;
 import com.tanoak.utils.StringUtil;
 import freemarker.template.TemplateException;
@@ -41,9 +41,9 @@ public class ServiceTask extends AbstractTask {
         ColumnInfo columnInfo = columnInfoList.stream().filter(info -> info.getPropertyName().equalsIgnoreCase("id")).findFirst().get();
         interfaceData.put("ClassType", columnInfo.getType());
         interfaceData.put("EntityName", StringUtil.firstToLowerCase(className));
-        String filePath = FileUtil.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getService());
+        String filePath = FileUtils.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getService());
         String fileName = className + "Service.java";
         // 生成Service接口文件
-        FileUtil.generateToJava(FreemarkerConfigUtils.TYPE_INTERFACE, interfaceData, filePath + fileName);
+        FileUtils.generateToJava(FreemarkerConfigUtils.TYPE_INTERFACE, interfaceData, filePath + fileName);
     }
 }

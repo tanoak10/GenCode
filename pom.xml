@@ -8,11 +8,11 @@
     <artifactId>gencode</artifactId>
     <version>0.9.1</version>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
+<!--    <parent>-->
+<!--        <groupId>com.tanoak</groupId>-->
+<!--        <artifactId>gencode</artifactId>-->
+<!--        <version>0.9.1</version>-->
+<!--    </parent>-->
 
     <licenses>
         <license>

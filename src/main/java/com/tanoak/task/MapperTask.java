@@ -47,10 +47,10 @@ public class MapperTask extends AbstractTask {
         mapperData.put("InsertBatchValues", GeneratorUtil.generateMapperInsertBatchValues(columnInfoList, StringUtil.firstToLowerCase(className)));
         mapperData.put("InsertValues", GeneratorUtil.generateMapperInsertValues(columnInfoList));
         mapperData.put("UpdateProperties", GeneratorUtil.generateMapperUpdateProperties(columnInfoList));
-        String filePath = FileUtil.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
+        String filePath = FileUtils.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
         String fileName = className + "Mapper.xml";
         // 生成Mapper文件
-        FileUtil.generateToJava(FreemarkerConfigUtils.TYPE_MAPPER, mapperData, filePath + fileName);
+        FileUtils.generateToJava(FreemarkerConfigUtils.TYPE_MAPPER, mapperData, filePath + fileName);
     }
 
     private ColumnInfo getPrimaryKeyColumnInfo(List<ColumnInfo> list) {

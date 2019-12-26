@@ -3,7 +3,7 @@ package com.tanoak.task;
 import com.tanoak.entity.ColumnInfo;
 import com.tanoak.task.base.AbstractTask;
 import com.tanoak.utils.ConfigUtil;
-import com.tanoak.utils.FileUtil;
+import com.tanoak.utils.FileUtils;
 import com.tanoak.utils.FreemarkerConfigUtils;
 import com.tanoak.utils.StringUtil;
 import freemarker.template.TemplateException;
@@ -40,9 +40,9 @@ public class DaoTask extends AbstractTask {
         ColumnInfo columnInfo = columnInfoList.stream().filter(info -> info.getPropertyName().equalsIgnoreCase("id")).findFirst().get();
         daoData.put("ClassType", columnInfo.getType());
         daoData.put("EntityName", StringUtil.firstToLowerCase(className));
-        String filePath = FileUtil.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
+        String filePath = FileUtils.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getDao());
         String fileName = className + "Dao.java";
         // 生成dao文件
-        FileUtil.generateToJava(FreemarkerConfigUtils.TYPE_DAO, daoData, filePath + fileName);
+        FileUtils.generateToJava(FreemarkerConfigUtils.TYPE_DAO, daoData, filePath + fileName);
     }
 }

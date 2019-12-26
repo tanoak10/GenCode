@@ -3,7 +3,7 @@ package com.tanoak.task;
 import com.tanoak.entity.ColumnInfo;
 import com.tanoak.task.base.AbstractTask;
 import com.tanoak.utils.ConfigUtil;
-import com.tanoak.utils.FileUtil;
+import com.tanoak.utils.FileUtils;
 import com.tanoak.utils.FreemarkerConfigUtils;
 import com.tanoak.utils.StringUtil;
 import freemarker.template.TemplateException;
@@ -44,9 +44,9 @@ public class ControllerTask extends AbstractTask {
         controllerData.put("Date", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         controllerData.put("ClassName", className);
         controllerData.put("EntityName", StringUtil.firstToLowerCase(className));
-        String filePath = FileUtil.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getController());
+        String filePath = FileUtils.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getController());
         String fileName = className + "Controller.java";
         // 生成Controller文件
-        FileUtil.generateToJava(FreemarkerConfigUtils.TYPE_CONTROLLER, controllerData, filePath + fileName);
+        FileUtils.generateToJava(FreemarkerConfigUtils.TYPE_CONTROLLER, controllerData, filePath + fileName);
     }
 }

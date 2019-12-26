@@ -3,7 +3,7 @@ package com.tanoak.task;
 import com.tanoak.entity.ColumnInfo;
 import com.tanoak.task.base.AbstractTask;
 import com.tanoak.utils.ConfigUtil;
-import com.tanoak.utils.FileUtil;
+import com.tanoak.utils.FileUtils;
 import com.tanoak.utils.FreemarkerConfigUtils;
 import com.tanoak.utils.StringUtil;
 import freemarker.template.TemplateException;
@@ -41,13 +41,13 @@ public class ServiceImplTask extends AbstractTask {
         ColumnInfo columnInfo = columnInfoList.stream().filter(info -> info.getPropertyName().equalsIgnoreCase("id")).findFirst().get();
         serviceData.put("ClassType", columnInfo.getType());
         serviceData.put("EntityName", StringUtil.firstToLowerCase(className));
-        String filePath = FileUtil.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getServiceImpl());
+        String filePath = FileUtils.getSourcePath() + StringUtil.package2Path(ConfigUtil.getConfiguration().getPackageName()) + StringUtil.package2Path(ConfigUtil.getConfiguration().getPath().getServiceImpl());
         serviceData.put("Impl", "Impl implements " + className + "Service");
         serviceData.put("Override", "\n    @Override");
         serviceData.put("InterfaceImport", "import " + ConfigUtil.getConfiguration().getPackageName() + ConfigUtil.getConfiguration().getPath().getService() + "." + className + "Service;");
         String fileName = className + "ServiceImpl.java";
         System.out.println("Generating " + className + "ServiceImpl.java");
         // 生成Service文件
-        FileUtil.generateToJava(FreemarkerConfigUtils.TYPE_SERVICE, serviceData, filePath + fileName);
+        FileUtils.generateToJava(FreemarkerConfigUtils.TYPE_SERVICE, serviceData, filePath + fileName);
     }
 }
